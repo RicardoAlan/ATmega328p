@@ -28,6 +28,8 @@ always @(posedge clk_fm or posedge rst_fm) begin
             Mem_F[0] <= 16'b0010000100001110; //AND  
               Mem_F[1] <= 16'b0000110100010001; //ADD
               Mem_F[2] <= 16'b0010000100001110; //AND
+              Mem_F[3] <= 16'b0010110101011001; //MOV d=21 r=9 lo del 9 al 21
+              Mem_F[4] <= 16'b1110011101100011; //LDI grabo 115 en d=22
             end
 end
 
