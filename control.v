@@ -36,10 +36,7 @@ else if (estado == Decode) begin
     end
     else
     begin
-        ReadM = 1; //si no es aritmetica manda direcciÃ³n
-        EscM = 1; //escribe el dato que le llegue del mux 5
-        selM2 = 1;
-        selM5 = 1;
+      enable_D = 1;
     end
 end
 else if (estado == Execute) begin
@@ -49,12 +46,19 @@ else if (estado == Execute) begin
     end 
     else begin
         Wr_en = 0;
+        enableW_SRT = 1; //permito escribir las flags
+        enableR_SRT = 1; //permito leerlas
+        selM2 = 1;
+        selM4 = 1;
+        selM5 = 1;
+        ReadM = 1; //si no es aritmetica manda direcciÃ³n
+        EscM = 1; //escribe el dato que le llegue del mux 5
     end
 end
 else if (estado == WriteB) begin
     en_pcount = 1;
     Wr_en = 1; //permito escribir en el file R
-  	#5 Wr_en = 0;
+  	#20 Wr_en = 0;
 end
 end
 
