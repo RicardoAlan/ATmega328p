@@ -55,7 +55,7 @@ begin
     
     	6'b001011: //ARITMETICA MOV
         begin
-          #30 DMode = 4'b0010; //SACA A SIN CAMBIOS
+          #30 DMode = 4'b0011; //SACA B SIN CAMBIOS
           Rr = {instR[9], instR[3:0]};
           Rd = {instR[8], instR[7:4]};
           K = instR[7:0];
@@ -66,7 +66,14 @@ begin
           Rr = {instR[9], instR[3:0]};
           Rd = {instR[8], instR[7:4]};
           K = instR[7:0];
-        end   
+        end
+    	6'b111001: //LDI
+        begin
+          #30 DMode = 4'b0011; //SACA B SIN CAMBIOS
+          Rr = {instR[9], instR[3:0]};
+          Rd = {1'b1, instR[7:4]};
+          K = {instR[11:8],instR[3:0]};
+        end
                
     endcase
 end
